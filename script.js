@@ -196,14 +196,14 @@ if(isWinningCombo) return;
 //check on the bottom left diagonal
 winningCells = [cell]; //put the current cell inside first.
 rowToCheck = rowIndex + 1;
-colToCheck = colIndex - 1; //start by checking the column before it.
+colToCheck = colIndex - 1; //start going along bottom left diagonal
 
-while(colToCheck >= 0 && rowToCheck <= 5){ //this is edge case 3. we limit to check till the top most column.
-    const cellToCheck = rows[rowToCheck][colToCheck]; //this targets: the current row to check if there is a matching peg.
+while(colToCheck >= 0 && rowToCheck <= 5){ //this is edge case 5. we limit to check till the left bottom corner of the board
+    const cellToCheck = rows[rowToCheck][colToCheck]; //this targets: the current cell to check if there is a matching peg.
     if(getColorOfCell(cellToCheck)===color){
         winningCells.unshift(cellToCheck); //add to left of cell in the winningCells array each time there is a match
         rowToCheck++;
-        colToCheck--;  // move on the the next row at the top.
+        colToCheck--;  // move on along the bottom left diagonal.
     } else {
         break; //if its not then can we stop checking/adding to the winningCells array, so we can straight break the loop.
     }
@@ -213,13 +213,13 @@ while(colToCheck >= 0 && rowToCheck <= 5){ //this is edge case 3. we limit to ch
 
 rowToCheck = rowIndex - 1;
 colToCheck = colIndex + 1;
-
-while(colToCheck <= 6 && rowToCheck >= 0){ //this is edge case 4. we limit to check till the bottom most row
-    const cellToCheck = rows[rowToCheck][colToCheck]; //this targets: the current row to check if there is a matching peg.
+//start going along top right diagonal
+while(colToCheck <= 6 && rowToCheck >= 0){ //this is edge case 6. we limit to check till the top right corner of the board
+    const cellToCheck = rows[rowToCheck][colToCheck]; //this targets: the current cell to check if there is a matching peg.
     if(getColorOfCell(cellToCheck)===color){ //same as above but now we add to the right instead.
         winningCells.push(cellToCheck);
         rowToCheck--;
-        colToCheck++;
+        colToCheck++; //move along the top right diagonal.
     } else {
         break; //if its not then can we stop checking/adding to the winningCells array, so we can straight break the loop.
     }
@@ -231,14 +231,14 @@ if(isWinningCombo) return;
 //check on the top left diagonal
 winningCells = [cell]; //put the current cell inside first.
 rowToCheck = rowIndex - 1;
-colToCheck = colIndex - 1; //start by checking the column before it.
+colToCheck = colIndex - 1; //move along top left diagonal
 
-while(rowToCheck >= 0 && colToCheck >= 0){ //this is edge case 3. we limit to check till the top most column.
+while(rowToCheck >= 0 && colToCheck >= 0){ //this is edge case 7. we limit to check till the top left corner of the board
     const cellToCheck = rows[rowToCheck][colToCheck]; //this targets: the current row to check if there is a matching peg.
     if(getColorOfCell(cellToCheck)===color){
         winningCells.unshift(cellToCheck); //add to left of cell in the winningCells array each time there is a match
         rowToCheck--;
-        colToCheck--;  // move on the the next row at the top.
+        colToCheck--;  // move on along top left diagonal.
     } else {
         break; //if its not then can we stop checking/adding to the winningCells array, so we can straight break the loop.
     }
@@ -249,12 +249,12 @@ while(rowToCheck >= 0 && colToCheck >= 0){ //this is edge case 3. we limit to ch
 rowToCheck = rowIndex + 1;
 colToCheck = colIndex + 1;
 
-while(colToCheck <= 5 && rowToCheck <= 6){ //this is edge case 4. we limit to check till the bottom most row
-    const cellToCheck = rows[rowToCheck][colToCheck]; //this targets: the current row to check if there is a matching peg.
+while(colToCheck <= 5 && rowToCheck <= 6){ //this is edge case 8. we limit to check till the bottom right corner of the board
+    const cellToCheck = rows[rowToCheck][colToCheck]; //this targets: the current cell to check if there is a matching peg.
     if(getColorOfCell(cellToCheck)===color){ //same as above but now we add to the right instead.
         winningCells.push(cellToCheck);
         rowToCheck++;
-        colToCheck++;
+        colToCheck++; // we move downwards diagonally
     } else {
         break; //if its not then can we stop checking/adding to the winningCells array, so we can straight break the loop.
     }
@@ -269,12 +269,12 @@ const rowsWithoutTop = rows.slice(0,rows.length-1);
 for(const row of rowsWithoutTop){
     for(const cell of row){
         const classList = getClassListArray(cell);
-        if(!classList.includes("yellow") && !classList.includes("red")){
+        if(!classList.includes("yellow") && !classList.includes("red")){ //as long as there is an empty cell game has not ended and its not a tie.
             return
         }
     }
 }
-
+// if the above loop completes without returning, it means there is a tie. game ends in a tie!!!
 gameisLive = false;
 statusSpan.textContent = "Game is a tie!!"
 
