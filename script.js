@@ -263,6 +263,21 @@ while(colToCheck <= 5 && rowToCheck <= 6){ //this is edge case 4. we limit to ch
 isWinningCombo = checkWinningCells(winningCells);
 if(isWinningCombo) return;
 
+
+//check for tie
+const rowsWithoutTop = rows.slice(0,rows.length-1);
+for(const row of rowsWithoutTop){
+    for(const cell of row){
+        const classList = getClassListArray(cell);
+        if(!classList.includes("yellow") && !classList.includes("red")){
+            return
+        }
+    }
+}
+
+gameisLive = false;
+statusSpan.textContent = "Game is a tie!!"
+
 }
 
 
