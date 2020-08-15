@@ -33,7 +33,6 @@ h1 {
   display: flex;
   height: 100px;
   justify-content: center;
-  border: 1px solid red;
   width: 100px;
 }
 
@@ -87,7 +86,7 @@ h1 {
   width: 700px;
 }
 
-.reset {
+.reset, .undo {
   background-color: #4370F1;
   border-radius: 5px;
   border: none;

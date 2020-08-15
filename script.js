@@ -6,6 +6,8 @@ const allCells = document.querySelectorAll('.cell:not(.row-top)');
 const topCells = document.querySelectorAll('.cell.row-top');
 const resetButton = document.querySelector('.reset');
 const statusSpan = document.querySelector('.status');
+const undoButton = document.querySelector('.undo');
+let undoCell = [],undoCellColumn = [];
 
 // columns, arranged from bottom to top. to mimic the peg dropping down to the bottom most row first.
 const column0 = [allCells[35], allCells[28], allCells[21], allCells[14], allCells[7], allCells[0], topCells[0]];
@@ -315,8 +317,9 @@ const handleClick = (event) => {
 if(!gameIsLive) return; //if game is not live. dont do anything.
 
 const [rowIndex,colIndex] = getCellLocation(event.target);
-
+undoCellColumn.push(colIndex);
 const openCell = getFirstOpenCellForColumn(colIndex);
+undoCell.push(openCell);
 
 if (!openCell){ //if there is a return value, it means its truthy. null is a falsy value. so !openCell means the getFirstOpenCellForColumn function returns null.
     return; // dont do anything. just return and end the function and dont run the rest of the code.
@@ -328,7 +331,7 @@ if (!openCell){ //if there is a return value, it means its truthy. null is a fal
 //     openCell.classList.add("red");
 // }
 
-//basically the below ternary operator summarizes the above statement. so its saying if yellowisNExt is true, add "yellow", if false, add "red".
+//basically the below ternary operator summarizes the above statement. so its saying if yellowisNext is true, add "yellow", if false, add "red".
 
 openCell.classList.add(yellowisNext ? "yellow" : "red");
 
@@ -372,3 +375,16 @@ resetButton.addEventListener("click",()=>{
     yellowisNext = true;
     statusSpan.textContent = "";
 });
+
+undoButton.addEventListener("click",()=>{
+    if(gameIsLive && undoCell.length > 0 && undoCellColumn.length > 0){
+    undoCell[undoCell.length-1].classList.remove("yellow");
+    undoCell[undoCell.length-1].classList.remove("red");
+    clearColorTop(undoCellColumn[undoCellColumn.length-1]);
+    undoCell.pop();
+    undoCellColumn.pop();
+    yellowisNext = !yellowisNext //flip to red's turn. not true = false.
+}
+
+
+})
