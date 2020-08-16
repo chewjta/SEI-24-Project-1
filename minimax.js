@@ -33,8 +33,9 @@ rows[tempI][j].classList.add("red");
 }
 
 
-rows[tempI][j].classList.add("red");
+
 yellowisNext = !yellowisNext;
+return move;
 }
 
 
@@ -212,7 +213,7 @@ if (isMaximizing) {
 
         rows[tempI][j].classList.add("yellow");
 
-        let score = minimax(board, depth - 1, true, nr_moves + 1, alpha, beta);
+        let score = minimax(rows, depth - 1, true, nr_moves + 1, alpha, beta);
 
         rows[tempI][j].classList.remove("yellow");
 
