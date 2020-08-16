@@ -72,11 +72,13 @@ h1 {
 .cell.row-top.red::after {
   background: red;
   border: 3px solid black;
+  opacity:0.3;
 }
 
 .cell.row-top.yellow::after {
   background: yellow;
   border: 3px solid black;
+  opacity:0.3;
 }
 
 .footer {

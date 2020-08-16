@@ -8,6 +8,8 @@ const resetButton = document.querySelector('.reset');
 const statusSpan = document.querySelector('.status');
 const undoButton = document.querySelector('.undo');
 let undoCell = [],undoCellColumn = [];
+let aiScore;
+let result;
 
 // columns, arranged from bottom to top. to mimic the peg dropping down to the bottom most row first.
 const column0 = [allCells[35], allCells[28], allCells[21], allCells[14], allCells[7], allCells[0], topCells[0]];
@@ -114,7 +116,7 @@ const checkStatusOfGame = (cell) => {
 
     const color = getColorOfCell(cell);
 
-    if(!color) return; //once again null is a falsy value. so if there is no color class, it means the cell is empty and do nothing.
+    if(!color) return; //once again null is a falsy value. so if there is no color class, it means the cell is empty and skip the rest of checking if there is a win condition and add the peg.
 
 const [rowIndex,colIndex] = getCellLocation(cell); // we get the rowindex and colindex of the cell we are checking.
 
@@ -154,7 +156,15 @@ while(colToCheck <= 6){ //this is edge case 2. we limit to check till the right 
 }
 
 let isWinningCombo = checkWinningCells(winningCells);
-if(isWinningCombo) return;
+if(isWinningCombo) {
+if(color === "yellow"){
+    aiScore = 2;
+    return;
+} if(color === "red"){
+    aiScore = 1;
+    return;
+}
+};
 
 // CHECK VERTICALLY
 
@@ -190,7 +200,16 @@ while(rowToCheck <= 5){ //this is edge case 4. we limit to check till the bottom
 }
 
 isWinningCombo = checkWinningCells(winningCells);
-if(isWinningCombo) return;
+if(isWinningCombo) {
+if(color === "yellow"){
+    aiScore = 2;
+    return;
+} if(color === "red"){
+    aiScore = 1;
+    return;
+}
+};
+
 
 
 // CHECK DIAGONALLY
@@ -228,7 +247,15 @@ while(colToCheck <= 6 && rowToCheck >= 0){ //this is edge case 6. we limit to ch
 }
 
 isWinningCombo = checkWinningCells(winningCells);
-if(isWinningCombo) return;
+if(isWinningCombo) {
+if(color === "yellow"){
+    aiScore = 2;
+    return;
+} if(color === "red"){
+    aiScore = 1;
+    return;
+}
+};
 
 //check on the top left diagonal
 winningCells = [cell]; //put the current cell inside first.
@@ -263,7 +290,15 @@ while(colToCheck <= 5 && rowToCheck <= 6){ //this is edge case 8. we limit to ch
 }
 
 isWinningCombo = checkWinningCells(winningCells);
-if(isWinningCombo) return;
+if(isWinningCombo) {
+if(color === "yellow"){
+    aiScore = 2;
+    return;
+} if(color === "red"){
+    aiScore = 1;
+    return;
+}
+};
 
 
 //check for tie
@@ -279,6 +314,7 @@ for(const row of rowsWithoutTop){
 // if the above loop completes without returning, it means there is a tie. game ends in a tie!!!
 gameisLive = false;
 statusSpan.textContent = "Game is a tie!!"
+aiScore = -1;
 
 }
 
@@ -346,7 +382,13 @@ clearColorTop(colIndex);
 if(gameIsLive){ //only run the following if game is live!
 const topCell = topCells[colIndex];
 topCell.classList.add(yellowisNext ? "yellow" : "red"); //when we clear the color, we need to add back the respectively color if not the peg will just be empty.
+
 }
+
+// if(yellowisNext == false){
+//     aiMove();
+// }
+
 }
 
 
@@ -388,3 +430,13 @@ undoButton.addEventListener("click",()=>{
 
 
 })
+
+
+
+
+
+
+
+
+
+
