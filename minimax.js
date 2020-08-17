@@ -108,33 +108,33 @@ function score_position(player,player2,nr_moves){
         (countDiagonal(i, j, 1, player) == 3 && countDiagonal(i, j, 1, 0) == 1))
 
 {
-        score += 6;
+        score += 7;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player) == 2 && countHorizontal(i, j, i + 3, j, 0) == 2) || (countHorizontal(i, j, i, j + 3, player) == 2 && countHorizontal(i, j, i, j + 3, 0) == 2) ||
  (countDiagonal(i, j, -1, player) == 2 && countDiagonal(i, j, -1, 0) == 2) ||
         (countDiagonal(i, j, 1, player) == 2 && countDiagonal(i, j, 1, 0) == 2)) {
-        score += 4;
+        score += 5;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player) == 1 && countHorizontal(i, j, i + 3, j, 0) == 3) || (countHorizontal(i, j, i, j + 3, player) == 1 && countHorizontal(i, j, i, j + 3, 0) == 3) ||
           (countDiagonal(i, j, -1, player) == 1 && countDiagonal(i, j, -1, 0) == 3)||
         (countDiagonal(i, j, 1, player) == 1 && countDiagonal(i, j, 1, 0) == 3)) {
-        score += 2;
+        score += 3;
 
       }
 
       if ((countHorizontal(i, j, i + 3, j, player2) == 3 && countHorizontal(i, j, i + 3, j, 0) == 1) || (countHorizontal(i, j, i, j + 3, player2) == 3 && countHorizontal(i, j, i, j + 3, 0) == 1) ||
           (countDiagonal(i, j, -1, player2) == 3 && countDiagonal(i, j, -1, 0) == 1) ||
         (countDiagonal(i, j, 1, player2) == 3 && countDiagonal(i, j, 1, 0) == 1)) {
-        score -= 6;
+        score -= 10;
 
       }
 
       if ((countHorizontal(i, j, i + 3, j, player2) == 2 && countHorizontal(i, j, i + 3, j, 0) == 2) || (countHorizontal(i, j, i, j + 3, player2) == 2 && countHorizontal(i, j, i, j + 3, 0) == 2) ||
           (countDiagonal(i, j, -1, player2) == 2 && countDiagonal(i, j, -1, 0) == 2) ||
         (countDiagonal(i, j, 1, player2) == 2 && countDiagonal(i, j, 1, 0) == 2)) {
-        score -= 3;
+        score -= 2;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player2) == 1 && countHorizontal(i, j, i + 3, j, 0) == 3) || (countHorizontal(i, j, i, j + 3, player2) == 1 && countHorizontal(i, j, i, j + 3, 0) == 3) ||
