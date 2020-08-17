@@ -1,7 +1,7 @@
 
 
 
-let depth = 1; // how many columns in terms of index
+let depth = 2; // how many columns in terms of index
 
 let scores = {
     red: Infinity,
@@ -49,77 +49,61 @@ function countHorizontal(startRow,startCol,endRow,endCol,player){
     let pieces = 0;
     if (endRow >= 5){endRow = 5};
     if(endCol>=6){endCol = 6};
-if(player == 0){
-        for(let i=startRow;i<=endRow;i++){
+for(let i=startRow;i<=endRow;i++){
         for(let j=startCol;j<=endCol;j++){
-            if(!getColorOfCell(rows[i][j])){
+if(player==0 && !getColorOfCell(rows[startRow][startCol])){
+    pieces+=1
+}else{
+    if(getClassListArray(rows[i][j]).includes(player)){
                 pieces += 1;
             }
-        }
-    }
-    return pieces;
+}}
 }
 
-else {
-    for(let i=startRow;i<=endRow;i++){
-        for(let j=startCol;j<=endCol;j++){
-            if(getClassListArray(rows[i][j]).includes(player)){
-                pieces += 1;
-            }
-        }
-    }
-    return pieces;
+return pieces;
 }
-}
+
 
 
 function countDiagonal(startRow,startCol,direction,player){
 
     let pieces = 0;
 
-if(player == 0){
-    for(let x=0;x<4;x++){
-        if(direction == 1){
-            if(startRow + x < 6 && startCol + x < 7){
-                if(!getClassListArray(rows[startRow + x][startCol + x]).includes("red") && !getClassListArray(rows[startRow + x][startCol + x]).includes("yellow")){
-                pieces += 1;
-            }
-        }
-    } else {
-        if (startRow + x < 6 && startCol - x < 7 && startCol - x >= 0){
-                if(!getClassListArray(rows[startRow + x][startCol - x]).includes("red") && !getClassListArray(rows[startRow + x][startCol - x]).includes("yellow")){
-                pieces += 1;
-        }
-    }
-}
-}
-return pieces;
-} else {
-    for(let x=0;x<4;x++){
-        if(direction == 1){
-            if(startRow + x < 6 && startCol + x < 7){
+for(let x=0;x<4;x++){
+    if(direction==1){
+        if(startRow + x < 6 && startCol + x < 7){
+            if(player==0 && !getColorOfCell(rows[startRow + x][startCol
+                + x])){
+                pieces+=1
+            } else{
                 if(getClassListArray(rows[startRow+x][startCol+x]).includes(player)){
                 pieces += 1;
             }
         }
     } else {
         if (startRow + x < 6 && startCol - x < 7 && startCol - x > 0){
+            if(player==0 && !getColorOfCell(rows[startRow + x][startCol
+                - x])){
+                pieces+=1
+            } else {
                 if(getClassListArray(rows[startRow+x][startCol-x]).includes(player)){
                 pieces += 1;
+            }
         }
     }
 }
 }
-return pieces;
 }
+return pieces;
+
 }
 
 function score_position(player,player2,nr_moves){
     let score = 0;
 
-    for(let i=1;i<6;i++){
-        for(let j=1;j<7;j++){
-         if ((countHorizontal(i, j, i + 4, j, player) == 3 && countHorizontal(i, j, i + 4, j, 0) == 1) || (countHorizontal(i, j, i, j + 4, player) == 3 && countHorizontal(i, j, i, j + 4, 0) == 1) ||
+    for(let i=5;i>=1;i--){
+        for(let j=0;j<7;j++){
+         if ((countHorizontal(i, j, i + 3, j, player) == 3 && countHorizontal(i, j, i + 3, j, 0) == 1) || (countHorizontal(i, j, i, j + 3, player) == 3 && countHorizontal(i, j, i, j + 3, 0) == 1) ||
 (countDiagonal(i, j, -1, player) == 3 && countDiagonal(i, j, -1, 0) == 1) ||
         (countDiagonal(i, j, 1, player) == 3 && countDiagonal(i, j, 1, 0) == 1))
 
@@ -127,33 +111,33 @@ function score_position(player,player2,nr_moves){
         score += 1000;
       }
 
-      if ((countHorizontal(i, j, i + 4, j, player) == 2 && countHorizontal(i, j, i + 4, j, 0) == 2) || (countHorizontal(i, j, i, j + 4, player) == 2 && countHorizontal(i, j, i, j + 4, 0) == 2) ||
+      if ((countHorizontal(i, j, i + 3, j, player) == 2 && countHorizontal(i, j, i + 3, j, 0) == 2) || (countHorizontal(i, j, i, j + 3, player) == 2 && countHorizontal(i, j, i, j + 3, 0) == 2) ||
  (countDiagonal(i, j, -1, player) == 2 && countDiagonal(i, j, -1, 0) == 2) ||
         (countDiagonal(i, j, 1, player) == 2 && countDiagonal(i, j, 1, 0) == 2)) {
         score += 10;
       }
 
-      if ((countHorizontal(i, j, i + 4, j, player) == 1 && countHorizontal(i, j, i + 4, j, 0) == 3) || (countHorizontal(i, j, i, j + 4, player) == 1 && countHorizontal(i, j, i, j + 4, 0) == 3) ||
+      if ((countHorizontal(i, j, i + 3, j, player) == 1 && countHorizontal(i, j, i + 3, j, 0) == 3) || (countHorizontal(i, j, i, j + 4, player) == 1 && countHorizontal(i, j, i, j + 4, 0) == 3) ||
           (countDiagonal(i, j, -1, player) == 1 && countDiagonal(i, j, -1, 0) == 3)||
         (countDiagonal(i, j, 1, player) == 1 && countDiagonal(i, j, 1, 0) == 3)) {
         score += 1;
 
       }
 
-      if ((countHorizontal(i, j, i + 4, j, player2) == 3 && countHorizontal(i, j, i + 4, j, 0) == 1) || (countHorizontal(i, j, i, j + 4, player2) == 3 && countHorizontal(i, j, i, j + 4, 0) == 1) ||
+      if ((countHorizontal(i, j, i + 3, j, player2) == 3 && countHorizontal(i, j, i + 3, j, 0) == 1) || (countHorizontal(i, j, i, j + 3, player2) == 3 && countHorizontal(i, j, i, j + 3, 0) == 1) ||
           (countDiagonal(i, j, -1, player2) == 3 && countDiagonal(i, j, -1, 0) == 1) ||
         (countDiagonal(i, j, 1, player2) == 3 && countDiagonal(i, j, 1, 0) == 1)) {
         score -= 1000;
 
       }
 
-      if ((countHorizontal(i, j, i + 4, j, player2) == 2 && countHorizontal(i, j, i + 4, j, 0) == 2) || (countHorizontal(i, j, i, j + 4, player2) == 2 && countHorizontal(i, j, i, j + 4, 0) == 2) ||
+      if ((countHorizontal(i, j, i + 3, j, player2) == 2 && countHorizontal(i, j, i + 3, j, 0) == 2) || (countHorizontal(i, j, i, j + 3, player2) == 2 && countHorizontal(i, j, i, j + 3, 0) == 2) ||
           (countDiagonal(i, j, -1, player2) == 2 && countDiagonal(i, j, -1, 0) == 2) ||
         (countDiagonal(i, j, 1, player2) == 2 && countDiagonal(i, j, 1, 0) == 2)) {
         score -= 10;
       }
 
-      if ((countHorizontal(i, j, i + 4, j, player2) == 1 && countHorizontal(i, j, i + 4, j, 0) == 3) || (countHorizontal(i, j, i, j + 4, player2) == 1 && countHorizontal(i, j, i, j + 4, 0) == 3) ||
+      if ((countHorizontal(i, j, i + 3, j, player2) == 1 && countHorizontal(i, j, i + 3, j, 0) == 3) || (countHorizontal(i, j, i, j + 3, player2) == 1 && countHorizontal(i, j, i, j + 3, 0) == 3) ||
           (countDiagonal(i, j, -1, player2) == 1 && countDiagonal(i, j, -1, 0) == 3) ||
         (countDiagonal(i, j, 1, player2) == 1 && countDiagonal(i, j, 1, 0) == 3)) {
         score -= 1;

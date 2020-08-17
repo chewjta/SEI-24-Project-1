@@ -75,10 +75,10 @@ const columnWithoutTop = column.slice(0,column.length-1); // remove the top row 
 
 
 // we loop through each cell in the column excluding the top row. We then iterate through the classList to find if it has a yellow or red class. So any cell without both means its empty and it will be returned.
-for(const cell of columnWithoutTop){
-    const classList = getClassListArray(cell);
+for(let i=columnWithoutTop.length-1;i>=0;i--){
+    const classList = getClassListArray(rows[i][colIndex]);
     if(!classList.includes("yellow") && !classList.includes("red")) {
-        return cell;
+        return rows[i][colIndex];
     }
 }
 
