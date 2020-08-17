@@ -81,6 +81,7 @@ for(const cell of columnWithoutTop){
         return cell;
     }
 }
+
 return null; //if no empty cells are found for this column, we return null;
 
 }
@@ -385,9 +386,13 @@ topCell.classList.add(yellowisNext ? "yellow" : "red"); //when we clear the colo
 
 }
 
-// if(yellowisNext == false){
-//     aiMove();
-// }
+if(yellowisNext == false){
+    var aiTurn = aiMove();
+    var ai = getFirstOpenCellForColumn(aiTurn);
+    ai.classList.add("red");
+    checkStatusOfGame(ai);
+    if (aiScore != null) statusSpan.textContent = `${aiScore === 2 ? "Yellow" : "Red"} wins!`
+}
 
 }
 
