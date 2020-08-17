@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +32,7 @@ h1 {
 
 .cell {
   align-items: center;
-  background: #4370F1;
+  background: #3284DA;
   display: flex;
   height: 100px;
   justify-content: center;
@@ -45,6 +47,22 @@ h1 {
   cursor: pointer;
   height: 75px;
   width: 75px; /*pseudo elements are like disowned children, they get all the attributes of the parents  so you can still style them but they are not  technically considered the children. so pseudo nth child properties dont work on them. think of it as adding a child div to the main div but that div inherits but is not technically considered a child div.*/
+}
+
+.cell.black::after{
+    background-color:black;
+}
+
+.cell.black:not(.row-top).red.win {
+  background: red;
+}
+
+.cell.black:not(.row-top).yellow.win {
+  background: yellow;
+}
+
+.cell.grey{
+    background-color:#A5A5A5;
 }
 
 .cell:not(.row-top).red::after {
@@ -87,10 +105,18 @@ h1 {
   display: flex;
   justify-content: space-between;
   width: 700px;
+  margin-bottom:30px;
 }
 
-.reset, .undo {
-  background-color: #4370F1;
+.misc{
+     align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+}
+
+.dark, .ai, .multi, .adjustU,.adjustD {
+  background-color: #3284DA;
   border-radius: 5px;
   border: none;
   color: white;
@@ -102,12 +128,40 @@ h1 {
   text-transform: uppercase;
 }
 
-.reset:hover {
+.reset, .undo {
+  background-color: #3284DA;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px 30px;
+  text-transform: uppercase;
+}
+
+button:hover {
   background-color: #1D50F1;
 }
 
-.reset:active {
+button:active {
   background-color: #4d7ef1;
+
+}
+
+button.black {
+    background-color:#A5A5A5;
+    font-family:"Play",sans-serif;
+    color:#2EEB00;
+}
+
+button.black:hover {
+  background-color: #333333;
+}
+
+button.black:active {
+  background-color: #030303;
 
 }
 
@@ -148,3 +202,8 @@ h1 {
 .left-border.bottom-border {
   border-radius: 0 0 0 10px;
 }
+
+
+
+
+

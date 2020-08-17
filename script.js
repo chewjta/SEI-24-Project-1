@@ -10,6 +10,13 @@ const undoButton = document.querySelector('.undo');
 let undoCell = [],undoCellColumn = [];
 let aiScore;
 let result;
+let isDark = false;
+const darkButton = document.querySelector('.dark');
+const multiButton = document.querySelector('.multi');
+const aiButton = document.querySelector('.ai');
+const diffSpan = document.querySelector('.diff');
+const adjustU = document.querySelector('.adjustU');
+const adjustD = document.querySelector('.adjustD');
 
 // columns, arranged from bottom to top. to mimic the peg dropping down to the bottom most row first.
 const column0 = [allCells[35], allCells[28], allCells[21], allCells[14], allCells[7], allCells[0], topCells[0]];
@@ -106,6 +113,7 @@ const checkWinningCells = (cells) => {
     gameIsLive = false;
     for(const cell of cells){
         cell.classList.add("win");
+        console.log(cell.classList);
     } //set gameislive is false to end the game. add win class for css effects
 
     statusSpan.textContent = `${yellowisNext ? "Yellow" : "Red"} wins!`
@@ -438,8 +446,79 @@ undoButton.addEventListener("click",()=>{
 }
 
 
-})
+});
 
+
+// const darkButton = document.querySelector('.dark');
+// const multiButton = document.querySelector('.multi');
+// const aiButton = document.querySelector('.ai');
+// const diffSpan = document.querySelector('.diff');
+// const adjustU = document.querySelector('.adjustU');
+// const adjustD = document.querySelector('.adjustD');
+
+darkButton.addEventListener("click",()=>{
+    isDark = !isDark;
+    if(isDark){
+        let cells = document.querySelectorAll(".cell");
+        for (let i=0;i<cells.length;i++){
+            cells[i].classList.add("black");
+            cells[i].classList.add("grey");
+}
+        document.querySelector("body").style.backgroundColor = "black";
+        document.querySelector(".cell")
+        for(let i=0;i<topCells.length;i++){
+            topCells[i].style.backgroundColor = "black";
+        }
+
+        let buttons = document.querySelectorAll("button");
+        for(let i=0;i<buttons.length;i++){
+            buttons[i].classList.add("black");
+        }
+
+        document.querySelector("h1").style.color = "#2EEB00"
+        document.querySelector("h1").style.fontFamily = "Play, sans-serif";
+        var spans = document.querySelectorAll("span");
+        for(let i=0;i<spans.length;i++){
+            spans[i].style.color = "#2EEB00";
+            spans[i].style.fontFamily = "Play, sans-serif";
+        }
+
+
+        for(let i=0;i<allCells.length;i++){
+            allCells[i].classList.add("black");
+        }
+
+
+    } else {
+        let cells = document.querySelectorAll(".cell");
+        for (let i=0;i<cells.length;i++){
+            cells[i].classList.remove("black");
+            cells[i].classList.remove("grey");
+}
+        document.querySelector("body").style.backgroundColor = "white";
+        document.querySelector(".cell")
+        for(let i=0;i<topCells.length;i++){
+            topCells[i].style.backgroundColor = "white";
+        }
+
+         let buttons = document.querySelectorAll("button");
+        for(let i=0;i<buttons.length;i++){
+            buttons[i].classList.remove("black");
+        }
+        document.querySelector("h1").style.color = "black"
+        document.querySelector("h1").style.fontFamily = "sans-serif";
+        var spans = document.querySelectorAll("span");
+        for(let i=0;i<spans.length;i++){
+            spans[i].style.color = "black";
+            spans[i].style.fontFamily = " sans-serif";
+        }
+
+
+        for(let i=0;i<allCells.length;i++){
+            allCells[i].classList.remove("black");
+        }
+    }
+})
 
 
 

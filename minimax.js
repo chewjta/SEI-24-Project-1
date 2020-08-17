@@ -4,8 +4,8 @@
 let depth = 3; // how many columns in terms of index
 
 let scores = {
-    red: 100,
-    yellow: -100
+    red: 200,
+    yellow: -300
 }; //we make AI who is the red player the maximizing player
 
 function aiMove(){
