@@ -279,7 +279,7 @@ while(rowToCheck >= 0 && colToCheck >= 0){ //this is edge case 7. we limit to ch
 rowToCheck = rowIndex + 1;
 colToCheck = colIndex + 1;
 
-while(colToCheck <= 5 && rowToCheck <= 6){ //this is edge case 8. we limit to check till the bottom right corner of the board
+while(colToCheck <= 6 && rowToCheck <= 5){ //this is edge case 8. we limit to check till the bottom right corner of the board
     const cellToCheck = rows[rowToCheck][colToCheck]; //this targets: the current cell to check if there is a matching peg.
     if(getColorOfCell(cellToCheck)===color){ //same as above but now we add to the right instead.
         winningCells.push(cellToCheck);
