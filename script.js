@@ -383,15 +383,19 @@ clearColorTop(colIndex);
 if(gameIsLive){ //only run the following if game is live!
 const topCell = topCells[colIndex];
 topCell.classList.add(yellowisNext ? "yellow" : "red"); //when we clear the color, we need to add back the respectively color if not the peg will just be empty.
-
 }
 
-if(yellowisNext == false){
+if(yellowisNext == false && gameIsLive){
     var aiTurn = aiMove();
     var ai = getFirstOpenCellForColumn(aiTurn);
     ai.classList.add("red");
     checkStatusOfGame(ai);
-    if (aiScore != null) statusSpan.textContent = `${aiScore === 2 ? "Yellow" : "Red"} wins!`
+    yellowisNext = !yellowisNext;
+
+    if(gameIsLive){ //only run the following if game is live!
+const topCell = topCells[colIndex];
+topCell.classList.add(yellowisNext ? "yellow" : "red"); //when we clear the color, we need to add back the respectively color if not the peg will just be empty.
+}
 }
 
 }

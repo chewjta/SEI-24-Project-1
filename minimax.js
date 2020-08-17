@@ -1,7 +1,7 @@
 
 
 
-let depth = 2; // how many columns in terms of index
+let depth = 1; // how many columns in terms of index
 
 let scores = {
     red: Infinity,
@@ -38,8 +38,8 @@ rows[tempI][j].classList.add("red");
     }
 }
 
-console.log("ai makes a move")
-yellowisNext = !yellowisNext;
+
+
 return move;
 
 }
@@ -117,8 +117,8 @@ return pieces;
 function score_position(player,player2,nr_moves){
     let score = 0;
 
-    for(let i=0;i<6;i++){
-        for(let j=0;j<7;j++){
+    for(let i=1;i<6;i++){
+        for(let j=1;j<7;j++){
          if ((countHorizontal(i, j, i + 4, j, player) == 3 && countHorizontal(i, j, i + 4, j, 0) == 1) || (countHorizontal(i, j, i, j + 4, player) == 3 && countHorizontal(i, j, i, j + 4, 0) == 1) ||
 (countDiagonal(i, j, -1, player) == 3 && countDiagonal(i, j, -1, 0) == 1) ||
         (countDiagonal(i, j, 1, player) == 3 && countDiagonal(i, j, 1, 0) == 1))
