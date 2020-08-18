@@ -11,6 +11,7 @@ let undoCell = [],undoCellColumn = [];
 let aiScore;
 let result;
 let isDark = false;
+let aiMode;
 const darkButton = document.querySelector('.dark');
 const multiButton = document.querySelector('.multi');
 const aiButton = document.querySelector('.ai');
@@ -436,7 +437,7 @@ resetButton.addEventListener("click",()=>{
 });
 
 undoButton.addEventListener("click",()=>{
-    if(gameIsLive && undoCell.length > 0 && undoCellColumn.length > 0){
+    if(aiMode && gameIsLive && undoCell.length > 0 && undoCellColumn.length > 0){
     undoCell[undoCell.length-1].classList.remove("yellow");
     undoCell[undoCell.length-1].classList.remove("red");
     clearColorTop(undoCellColumn[undoCellColumn.length-1]);
@@ -475,8 +476,8 @@ darkButton.addEventListener("click",()=>{
             buttons[i].classList.add("black");
         }
 
-        document.querySelector("h1").style.color = "#2EEB00"
-        document.querySelector("h1").style.fontFamily = "Play, sans-serif";
+        document.querySelector("h2").style.color = "#2EEB00"
+        document.querySelector("h2").style.fontFamily = "Play, sans-serif";
         var spans = document.querySelectorAll("span");
         for(let i=0;i<spans.length;i++){
             spans[i].style.color = "#2EEB00";
@@ -505,8 +506,8 @@ darkButton.addEventListener("click",()=>{
         for(let i=0;i<buttons.length;i++){
             buttons[i].classList.remove("black");
         }
-        document.querySelector("h1").style.color = "black"
-        document.querySelector("h1").style.fontFamily = "sans-serif";
+        document.querySelector("h2").style.color = "black"
+        document.querySelector("h2").style.fontFamily = "sans-serif";
         var spans = document.querySelectorAll("span");
         for(let i=0;i<spans.length;i++){
             spans[i].style.color = "black";

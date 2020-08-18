@@ -7,6 +7,11 @@
 
 }
 
+.main-body{
+    display:flex;
+    align-items: center;
+}
+
 body {
   align-items: center;
   background: white;
@@ -17,8 +22,15 @@ body {
   width: 100%;
 }
 
-h1 {
+h2 {
   text-transform: uppercase;
+  text-align: center;
+  font-size:22px;
+}
+
+.controls{
+    margin-left:30px;
+    margin-top:100px;
 }
 
 .game-board {
@@ -101,18 +113,22 @@ h1 {
 }
 
 .footer {
-  align-items: center;
+  align-items: left;
   display: flex;
   justify-content: space-between;
-  width: 700px;
+  flex-direction:column;
+  width: 200px;
   margin-bottom:30px;
+  text-align:center;
 }
 
 .misc{
-     align-items: center;
+    align-items: left;
   display: flex;
   justify-content: space-between;
-  width: 700px;
+  width: 200px;
+  flex-direction:column;
+  text-align:center;
 }
 
 .dark, .ai, .multi, .adjustU,.adjustD {
@@ -164,6 +180,11 @@ button.black:active {
   background-color: #030303;
 
 }
+
+button{
+    margin:10px;
+}
+
 
 .status {
   display: block;

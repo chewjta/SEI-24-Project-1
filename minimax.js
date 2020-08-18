@@ -51,13 +51,14 @@ function countHorizontal(startRow,startCol,endRow,endCol,player){
     if(endCol>=6){endCol = 6};
 for(let i=startRow;i<=endRow;i++){
         for(let j=startCol;j<=endCol;j++){
-if(player==0 && !getColorOfCell(rows[startRow][startCol])){
+if(player == 0 && !getColorOfCell(rows[i][j])){
     pieces+=1
 }else{
     if(getClassListArray(rows[i][j]).includes(player)){
                 pieces += 1;
             }
-}}
+}
+}
 }
 
 return pieces;
@@ -101,40 +102,40 @@ return pieces;
 function score_position(player,player2,nr_moves){
     let score = 0;
 
-    for(let i=6;i<=1;i--){
+    for(let i=5;i<=0;i--){
         for(let j=0;j<7;j++){
          if ((countHorizontal(i, j, i + 3, j, player) == 3 && countHorizontal(i, j, i + 3, j, 0) == 1) || (countHorizontal(i, j, i, j + 3, player) == 3 && countHorizontal(i, j, i, j + 3, 0) == 1) ||
 (countDiagonal(i, j, -1, player) == 3 && countDiagonal(i, j, -1, 0) == 1) ||
         (countDiagonal(i, j, 1, player) == 3 && countDiagonal(i, j, 1, 0) == 1))
 
 {
-        score += 7;
+        score += 5;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player) == 2 && countHorizontal(i, j, i + 3, j, 0) == 2) || (countHorizontal(i, j, i, j + 3, player) == 2 && countHorizontal(i, j, i, j + 3, 0) == 2) ||
  (countDiagonal(i, j, -1, player) == 2 && countDiagonal(i, j, -1, 0) == 2) ||
         (countDiagonal(i, j, 1, player) == 2 && countDiagonal(i, j, 1, 0) == 2)) {
-        score += 5;
+        score += 3;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player) == 1 && countHorizontal(i, j, i + 3, j, 0) == 3) || (countHorizontal(i, j, i, j + 3, player) == 1 && countHorizontal(i, j, i, j + 3, 0) == 3) ||
           (countDiagonal(i, j, -1, player) == 1 && countDiagonal(i, j, -1, 0) == 3)||
         (countDiagonal(i, j, 1, player) == 1 && countDiagonal(i, j, 1, 0) == 3)) {
-        score += 3;
+        score += 1;
 
       }
 
       if ((countHorizontal(i, j, i + 3, j, player2) == 3 && countHorizontal(i, j, i + 3, j, 0) == 1) || (countHorizontal(i, j, i, j + 3, player2) == 3 && countHorizontal(i, j, i, j + 3, 0) == 1) ||
           (countDiagonal(i, j, -1, player2) == 3 && countDiagonal(i, j, -1, 0) == 1) ||
         (countDiagonal(i, j, 1, player2) == 3 && countDiagonal(i, j, 1, 0) == 1)) {
-        score -= 10;
+        score -= 7;
 
       }
 
       if ((countHorizontal(i, j, i + 3, j, player2) == 2 && countHorizontal(i, j, i + 3, j, 0) == 2) || (countHorizontal(i, j, i, j + 3, player2) == 2 && countHorizontal(i, j, i, j + 3, 0) == 2) ||
           (countDiagonal(i, j, -1, player2) == 2 && countDiagonal(i, j, -1, 0) == 2) ||
         (countDiagonal(i, j, 1, player2) == 2 && countDiagonal(i, j, 1, 0) == 2)) {
-        score -= 2;
+        score -= 4;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player2) == 1 && countHorizontal(i, j, i + 3, j, 0) == 3) || (countHorizontal(i, j, i, j + 3, player2) == 1 && countHorizontal(i, j, i, j + 3, 0) == 3) ||
@@ -154,12 +155,12 @@ function minimax(board,depth,isMaximizing,nr_moves,alpha,beta){
  let result = getWinner();
   if (result == "yellow" || result == "red") {
     console.log("someone won")
-    return scores[result] - 20 * nr_moves; //nr_moves is the no.of remaining moves. we set this to reduce the score when it takes more moves to win.
+    return scores[result] - 2 * nr_moves; //nr_moves is the no.of remaining moves. we set this to reduce the score when it takes more moves to win.
   }
 
   if (result == -1) {
     console.log("nobody won")
-    return 0 - 50 * nr_moves;
+    return 0 - 5 * nr_moves;
   }
 
   if (depth == 0) {
