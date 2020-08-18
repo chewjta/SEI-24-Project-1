@@ -118,6 +118,7 @@ const checkWinningCells = (cells) => {
     } //set gameislive is false to end the game. add win class for css effects
 
     statusSpan.textContent = `${yellowisNext ? "Yellow" : "Red"} wins!`
+    statusSpan.style.color = yellowisNext ? "#EEC800" : "red";
     return true; //return true if there is a winning combination.
 }
 
