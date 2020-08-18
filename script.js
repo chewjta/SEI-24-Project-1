@@ -395,7 +395,7 @@ const topCell = topCells[colIndex];
 topCell.classList.add(yellowisNext ? "yellow" : "red"); //when we clear the color, we need to add back the respectively color if not the peg will just be empty.
 }
 
-if(yellowisNext == false && gameIsLive){
+if(yellowisNext == false && gameIsLive && aiMode){
     var aiTurn = aiMove();
     var ai = getFirstOpenCellForColumn(aiTurn);
     ai.classList.add("red");
@@ -434,11 +434,16 @@ resetButton.addEventListener("click",()=>{
     }
     gameIsLive = true;
     yellowisNext = true;
+    aiMode = false;
+    undoButton.classList.remove("disable");
+    aiButton.classList.remove("enable");
+    multiButton.classList.add("enable");
     statusSpan.textContent = "";
+    diffSpan.textContent = "";
 });
 
 undoButton.addEventListener("click",()=>{
-    if(aiMode && gameIsLive && undoCell.length > 0 && undoCellColumn.length > 0){
+    if(!aiMode && gameIsLive && undoCell.length > 0 && undoCellColumn.length > 0){
     undoCell[undoCell.length-1].classList.remove("yellow");
     undoCell[undoCell.length-1].classList.remove("red");
     clearColorTop(undoCellColumn[undoCellColumn.length-1]);
@@ -458,6 +463,8 @@ undoButton.addEventListener("click",()=>{
 // const adjustU = document.querySelector('.adjustU');
 // const adjustD = document.querySelector('.adjustD');
 
+
+//dark mode button setup.
 darkButton.addEventListener("click",()=>{
     isDark = !isDark;
     if(isDark){
@@ -477,11 +484,11 @@ darkButton.addEventListener("click",()=>{
             buttons[i].classList.add("black");
         }
 
-        document.querySelector("h2").style.color = "#2EEB00"
+        document.querySelector("h2").style.color = "#00E9D0"
         document.querySelector("h2").style.fontFamily = "Play, sans-serif";
         var spans = document.querySelectorAll("span");
         for(let i=0;i<spans.length;i++){
-            spans[i].style.color = "#2EEB00";
+            spans[i].style.color = "#00E9D0";
             spans[i].style.fontFamily = "Play, sans-serif";
         }
 
@@ -524,9 +531,66 @@ darkButton.addEventListener("click",()=>{
 
 
 
+//ai mode button setup.
+aiButton.addEventListener("click",()=>{
+    if(yellowisNext && gameIsLive){
+        aiMode = true;
+    multiButton.classList.remove("enable")
+    undoButton.classList.add("disable");
+    aiButton.classList.add("enable");
+           switch(depth){
+            case 1:
+            diffSpan.textContent = "Easy";
+            break;
+            case 2:
+            diffSpan.textContent = "Med";
+            break;
+            case 3: diffSpan.textContent = "Hard";
+            break;
+        }
+}
+})
 
 
+//multiplayer button setup.
+multiButton.addEventListener("click",()=>{
+    if(yellowisNext && gameIsLive){
+    aiMode = false;
+    diffSpan.textContent = "";
+    aiButton.classList.remove("enable");
+    undoButton.classList.remove("disable");
+    multiButton.classList.add("enable");
+ }
+})
 
+adjustU.addEventListener("click",()=>{
+    if( yellowisNext && aiMode && depth == 1 || depth == 2){
+        depth+=1;
+        switch(depth){
+            case 1:
+            diffSpan.textContent = "Easy";
+            break;
+            case 2:
+            diffSpan.textContent = "Med";
+            break;
+            case 3: diffSpan.textContent = "Hard";
+            break;
+        }
+    }
+})
 
-
-
+adjustD.addEventListener("click",()=>{
+    if( yellowisNext && aiMode && depth == 3 ||depth == 2){
+        depth-=1;
+        switch(depth){
+            case 1:
+            diffSpan.textContent = "Easy";
+            break;
+            case 2:
+            diffSpan.textContent = "Med";
+            break;
+            case 3: diffSpan.textContent = "Hard";
+            break;
+        }
+    }
+})

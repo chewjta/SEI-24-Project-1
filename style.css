@@ -74,7 +74,7 @@ h2 {
 }
 
 .cell.grey{
-    background-color:#A5A5A5;
+    background-color:#767676;
 }
 
 .cell:not(.row-top).red::after {
@@ -167,9 +167,9 @@ button:active {
 }
 
 button.black {
-    background-color:#A5A5A5;
+    background-color:#767676;
     font-family:"Play",sans-serif;
-    color:#2EEB00;
+    color:#00E9D0;
 }
 
 button.black:hover {
@@ -186,7 +186,7 @@ button{
 }
 
 
-.status {
+.status,.diff {
   display: block;
   font-size: 20px;
 }
@@ -231,4 +231,11 @@ button{
 }
 
 
+.undo.disable, .undo.black.disable{
+    background-color:#EA412C;
+    cursor:not-allowed;
+}
 
+.ai.enable, .multi.enable{
+    background-color:#009703;
+}
