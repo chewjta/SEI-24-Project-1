@@ -4,8 +4,8 @@
 let depth = 3; // how many columns in terms of index
 
 let scores = {
-    red: 200,
-    yellow: -300
+    red: 100000,
+    yellow: -100000
 }; //we make AI who is the red player the maximizing player
 
 function aiMove(){
@@ -102,20 +102,19 @@ return pieces;
 function score_position(player,player2,nr_moves){
     let score = 0;
 
-    for(let i=5;i<=0;i--){
-        for(let j=0;j<7;j++){
+    for(let i=6;i<=1;i--){
+        for(let j=1;j<7;j++){
          if ((countHorizontal(i, j, i + 3, j, player) == 3 && countHorizontal(i, j, i + 3, j, 0) == 1) || (countHorizontal(i, j, i, j + 3, player) == 3 && countHorizontal(i, j, i, j + 3, 0) == 1) ||
 (countDiagonal(i, j, -1, player) == 3 && countDiagonal(i, j, -1, 0) == 1) ||
         (countDiagonal(i, j, 1, player) == 3 && countDiagonal(i, j, 1, 0) == 1))
-
 {
-        score += 5;
+        score += 1000;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player) == 2 && countHorizontal(i, j, i + 3, j, 0) == 2) || (countHorizontal(i, j, i, j + 3, player) == 2 && countHorizontal(i, j, i, j + 3, 0) == 2) ||
  (countDiagonal(i, j, -1, player) == 2 && countDiagonal(i, j, -1, 0) == 2) ||
         (countDiagonal(i, j, 1, player) == 2 && countDiagonal(i, j, 1, 0) == 2)) {
-        score += 3;
+        score += 10;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player) == 1 && countHorizontal(i, j, i + 3, j, 0) == 3) || (countHorizontal(i, j, i, j + 3, player) == 1 && countHorizontal(i, j, i, j + 3, 0) == 3) ||
@@ -128,22 +127,23 @@ function score_position(player,player2,nr_moves){
       if ((countHorizontal(i, j, i + 3, j, player2) == 3 && countHorizontal(i, j, i + 3, j, 0) == 1) || (countHorizontal(i, j, i, j + 3, player2) == 3 && countHorizontal(i, j, i, j + 3, 0) == 1) ||
           (countDiagonal(i, j, -1, player2) == 3 && countDiagonal(i, j, -1, 0) == 1) ||
         (countDiagonal(i, j, 1, player2) == 3 && countDiagonal(i, j, 1, 0) == 1)) {
-        score -= 7;
+        score -= 1000;
 
       }
 
       if ((countHorizontal(i, j, i + 3, j, player2) == 2 && countHorizontal(i, j, i + 3, j, 0) == 2) || (countHorizontal(i, j, i, j + 3, player2) == 2 && countHorizontal(i, j, i, j + 3, 0) == 2) ||
           (countDiagonal(i, j, -1, player2) == 2 && countDiagonal(i, j, -1, 0) == 2) ||
         (countDiagonal(i, j, 1, player2) == 2 && countDiagonal(i, j, 1, 0) == 2)) {
-        score -= 4;
+        score -= 10;
       }
 
       if ((countHorizontal(i, j, i + 3, j, player2) == 1 && countHorizontal(i, j, i + 3, j, 0) == 3) || (countHorizontal(i, j, i, j + 3, player2) == 1 && countHorizontal(i, j, i, j + 3, 0) == 3) ||
           (countDiagonal(i, j, -1, player2) == 1 && countDiagonal(i, j, -1, 0) == 3) ||
         (countDiagonal(i, j, 1, player2) == 1 && countDiagonal(i, j, 1, 0) == 3)) {
         score -= 1;
-
       }
+
+
     }
   }
 
@@ -154,13 +154,12 @@ function score_position(player,player2,nr_moves){
 function minimax(board,depth,isMaximizing,nr_moves,alpha,beta){
  let result = getWinner();
   if (result == "yellow" || result == "red") {
-    console.log("someone won")
-    return scores[result] - 2 * nr_moves; //nr_moves is the no.of remaining moves. we set this to reduce the score when it takes more moves to win.
+    return scores[result] - 20 * nr_moves; //nr_moves is the no.of remaining moves. we set this to reduce the score when it takes more moves to win.
   }
 
   if (result == -1) {
     console.log("nobody won")
-    return 0 - 5 * nr_moves;
+    return 0 - 50 * nr_moves;
   }
 
   if (depth == 0) {
@@ -184,7 +183,7 @@ if(tempCell == null){continue;}
         rows[tempI][j].classList.remove("red");
 
         bestScore = Math.max(score, bestScore);
-
+        console.log(bestScore);
         alpha = Math.max(bestScore, alpha);
         if (alpha >= beta) {
           break

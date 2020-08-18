@@ -224,7 +224,11 @@ button{
   border-radius: 0 0 0 10px;
 }
 
-
+.instruct{
+    display:block;
+    width:1000px;
+    text-align:center;
+}
 
 
 
