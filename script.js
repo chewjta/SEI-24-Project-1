@@ -484,13 +484,7 @@ darkButton.addEventListener("click",()=>{
             buttons[i].classList.add("black");
         }
 
-        document.querySelector("h2").style.color = "#00E9D0"
-        document.querySelector("h2").style.fontFamily = "Play, sans-serif";
-        var spans = document.querySelectorAll("span");
-        for(let i=0;i<spans.length;i++){
-            spans[i].style.color = "#00E9D0";
-            spans[i].style.fontFamily = "Play, sans-serif";
-        }
+
 
 
         for(let i=0;i<allCells.length;i++){
@@ -513,13 +507,6 @@ darkButton.addEventListener("click",()=>{
          let buttons = document.querySelectorAll("button");
         for(let i=0;i<buttons.length;i++){
             buttons[i].classList.remove("black");
-        }
-        document.querySelector("h2").style.color = "black"
-        document.querySelector("h2").style.fontFamily = "sans-serif";
-        var spans = document.querySelectorAll("span");
-        for(let i=0;i<spans.length;i++){
-            spans[i].style.color = "black";
-            spans[i].style.fontFamily = " sans-serif";
         }
 
 

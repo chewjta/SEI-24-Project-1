@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 * {
   margin: 0;
@@ -30,7 +31,7 @@ h2 {
 
 .controls{
     margin-left:30px;
-    margin-top:100px;
+    margin-top:85px;
 }
 
 .game-board {
@@ -169,7 +170,7 @@ button:active {
 button.black {
     background-color:#767676;
     font-family:"Play",sans-serif;
-    color:#00E9D0;
+    color:black;
 }
 
 button.black:hover {
@@ -188,7 +189,11 @@ button{
 
 .status,.diff {
   display: block;
-  font-size: 20px;
+  font-size: 24px;
+  font-family:"Play",sans-serif;
+  width:180px;
+  position:relative;
+  left:10px;
 }
 
 /* CSS for styling the sides. and rounded corners */
@@ -228,6 +233,9 @@ button{
     display:block;
     width:1000px;
     text-align:center;
+    font-size:48px;
+    font-family: 'Bangers', cursive;
+    color:#E7CA00;
 }
 
 
@@ -238,4 +246,32 @@ button{
 
 .ai.enable, .multi.enable{
     background-color:#009703;
+}
+
+.animationComplete {
+  animation-name: complete;
+  animation-delay: 0s;
+  animation-duration: 3.0s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count:999
+}
+
+@keyframes complete {
+     0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.status{
+    animation-name: example;
+    animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-iteration-count:999
+}
+
+@keyframes example {
+  0%   {opacity:1;}
+  50%  {opacity:0;}
+  100% {opacity:1;}
 }
