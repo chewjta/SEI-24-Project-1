@@ -14,7 +14,7 @@ The player with yellow coins will start first.
 
 The aim for both players is to make a straight line of four own pieces; the line can be vertical, horizontal or diagonal.
 
-#### How the game goes on
+### How the game goes on
 
 Before starting, players decide randomly which of them will be the beginner; moves are made alternatively, one by turn.
 
