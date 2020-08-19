@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connect 4</title>
+<link rel="stylesheet" href="landingpage.css">
+</head>
+<body>
+<div class="main">
+    <div class="icon"><img src="https://cdn.game.tv/game-tv-content/images_3/fb18d4991b4f4112deb57f206a857829/Logo.png"></div>
+    <div class="start animationComplete">Press Enter to start game</div>
+    <div class="instructions">
+        <h2 style="text-decoration: underline;text-align:center;">How to play:</h2>
+        <ul>
+            <li>Hover over game board to drop pegs.</li>
+            <li><span style="color:yellow">Yellow</span> always starts first!</li>
+            <li>Get <span style="color:#00FEC7">four pegs in a row horizontally, vertically or diagonally</span> to win the game</li>
+            <li>Play solo vs AI or against a friend</li>
+            <li>AI is always <span style="color:red">red</span> and lets you make the first move.</li>
+            <li>Press <span style="color:grey">backspace</span> to return back to main menu from game </li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.body.addEventListener("keydown", function (event) {
+    if (event.keyCode === 13) {
+        window.location.replace("index.html");
+    }
+});
+</script>
+</body>
+</html>

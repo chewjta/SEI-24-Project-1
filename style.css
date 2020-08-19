@@ -236,6 +236,10 @@ button{
     font-size:48px;
     font-family: 'Bangers', cursive;
     color:#E7CA00;
+    position:relative;
+    left:-600px;
+    bottom:500px;
+      transform: rotate(-90deg);
 }
 
 
@@ -248,20 +252,7 @@ button{
     background-color:#009703;
 }
 
-.animationComplete {
-  animation-name: complete;
-  animation-delay: 0s;
-  animation-duration: 3.0s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  animation-iteration-count:999
-}
 
-@keyframes complete {
-     0% {opacity: 1;}
-  50% {opacity: 0;}
-  100% {opacity: 1;}
-}
 
 .status{
     animation-name: example;
@@ -274,4 +265,8 @@ button{
   0%   {opacity:1;}
   50%  {opacity:0;}
   100% {opacity:1;}
+}
+
+.diff{
+    color:red;
 }

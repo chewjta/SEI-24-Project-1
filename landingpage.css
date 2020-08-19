@@ -1,0 +1,81 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+    background-image: url("lpbg.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position:relative;
+}
+
+
+.main{
+  position:relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  justify-content:space-between;
+  padding: 25px;
+  width: 100%;
+}
+
+.animationComplete {
+  animation-name: complete;
+  animation-delay: 0s;
+  animation-duration: 3.0s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count:999;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 32px;
+}
+
+@keyframes complete {
+     0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.instructions{
+    position:relative;
+    padding:5px;
+    top:80px;
+    color:white;
+    line-height: 30px;
+    font-size: 24px;
+    font-family: "Bangers"
+}
+
+ul{
+    padding:20px;
+
+}
+
+li{
+    list-style-type: none;
+}
+
+.start{
+    position:relative;
+    top:20px;
+    color:white;
+}
+
+.logo{
+    position:relative;
+}
+
+img{
+    height:450px;
+    width:auto;
+}
+

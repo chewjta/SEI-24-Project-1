@@ -1,6 +1,10 @@
 
 //grouping up the cells by rows and columns for easier manipulation.
-
+    document.body.addEventListener("keydown", function (event) {
+    if (event.keyCode === 8) {
+        window.location.replace("landingpage.html");
+    }
+});
 // DOM Elements
 const allCells = document.querySelectorAll('.cell:not(.row-top)');
 const topCells = document.querySelectorAll('.cell.row-top');
