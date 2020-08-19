@@ -248,7 +248,7 @@ button{
     cursor:not-allowed;
 }
 
-.ai.enable, .multi.enable{
+.ai.enable, .multi.enable,.dark.enable{
     background-color:#009703;
 }
 

@@ -31,10 +31,10 @@ body, html {
 .animationComplete {
   animation-name: complete;
   animation-delay: 0s;
-  animation-duration: 3.0s;
+  animation-duration: 2s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
-  animation-iteration-count:999;
+  animation-iteration-count:9999;
   font-family: 'Press Start 2P', cursive;
   font-size: 32px;
 }

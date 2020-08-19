@@ -495,6 +495,7 @@ darkButton.addEventListener("click",()=>{
             allCells[i].classList.add("black");
         }
 
+darkButton.classList.add("enable");
 
     } else {
         let cells = document.querySelectorAll(".cell");
@@ -517,6 +518,7 @@ darkButton.addEventListener("click",()=>{
         for(let i=0;i<allCells.length;i++){
             allCells[i].classList.remove("black");
         }
+        darkButton.classList.remove("enable");
     }
 })
 
