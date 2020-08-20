@@ -1,5 +1,14 @@
 # Connect 4 Game
 
+##Content Page
+  * [Description](#description)
+  * [Objectives](#objectives)
+  * [Gameplay](#gameplay)
+  * [App](#app)
+  * [Features](#features)
+  * [References](#references)
+
+
 ### Description
 
 This game is played on a vertical board wich has seven hollow columns and six rows. Each column has a hole in the upper part of the board, where pieces are introduced. There is a window for every square, so that pieces can be seen from both sides.
@@ -10,11 +19,11 @@ Both players have a set of 21 thin pieces (like coins); each of them uses a diff
 
 The player with yellow coins will start first. 
 
-### Objective
+### Objectives
 
 The aim for both players is to make a straight line of four own pieces; the line can be vertical, horizontal or diagonal.
 
-### How the game goes on
+### Gameplay
 
 Before starting, players decide randomly which of them will be the beginner; moves are made alternatively, one by turn.
 
@@ -22,7 +31,7 @@ Moves entails in placing new pieces on the board; pieces slide downwards from up
 
 The winner is the first player who gets a straight line made with four own pieces and no gaps between them.
 
-## App Instructions
+## App
 
 Fork it and open landingpage.html to load up the main landing page. 
 
@@ -32,7 +41,7 @@ Rules are as mentioned above.
 
 ![demo](demo.gif)
 
-## Additional Features
+## Features
 
 Play against a friend on multiplayer mode
 
