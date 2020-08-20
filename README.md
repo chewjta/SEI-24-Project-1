@@ -30,6 +30,8 @@ Press 'Enter' key for Windows or 'Return" key for Mac OS to start game.
 
 Rules are as mentioned above. 
 
+![demo](demo.gif)
+
 ## Additional Features
 
 Play against a friend on multiplayer mode
