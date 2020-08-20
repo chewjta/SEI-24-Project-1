@@ -1,6 +1,6 @@
 # Connect 4 Game
 
-##Content Page
+## Content Page
   * [Description](#description)
   * [Objectives](#objectives)
   * [Gameplay](#gameplay)
