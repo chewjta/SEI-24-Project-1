@@ -19,6 +19,8 @@ Both players have a set of 21 thin pieces (like coins); each of them uses a diff
 
 The player with yellow coins will start first. 
 
+[Live Demo](https://chewjta.github.io/SEI-24-Project-1/)
+
 ### Objectives
 
 The aim for both players is to make a straight line of four own pieces; the line can be vertical, horizontal or diagonal.
